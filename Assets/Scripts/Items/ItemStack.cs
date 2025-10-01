@@ -4,43 +4,43 @@ using System;
 [System.Serializable]
 public class ItemStack
 {
-    public Item item;
-    public int count;
+    public Item Item;
+    public int Count;
 
     // Constructors
-    public ItemStack(Item item, int n)
+    public ItemStack(Item Item, int n)
     {
-        this.item = item;
+        this.Item = Item;
         AddToStack(n);
-        if (count < 1)
+        if (Count < 1)
         {
-            count = 1;
+            Count = 1;
         }
     }
 
-    // add copies of item to this stack, and prevent overflow
+    // add copies of Item to this stack, and prevent overflow
     public void AddToStack(int n)
     {
-        count += Math.Max(n, 1);
-        if (count > item.maxStackSize)
+        Count += Math.Max(n, 1);
+        if (Count > Item.maxStackSize)
         {
-            count = item.maxStackSize;
+            Count = Item.maxStackSize;
             // TODO: split into a new stack or something?
         }
     }
 
     public void RemoveFromStack(int n)
     {
-        count -= Math.Max(n, 1);
-        if (count <= 0)
+        Count -= Math.Max(n, 1);
+        if (Count <= 0)
         {
-            // Beg whatever is calling this method to delete the itemstack.
+            // Beg whatever is calling this method to delete the Itemstack.
 
         }
     }
 
     public override string ToString()
     {
-        return item.itemName + " " + count;
+        return Item.itemName + " " + Count;
     }
 }
